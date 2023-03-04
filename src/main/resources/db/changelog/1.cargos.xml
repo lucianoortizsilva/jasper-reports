@@ -1,0 +1,26 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+	<changeSet author="ortiz" id="202303032142">
+		<sql>
+			DROP TABLE IF EXISTS `cargos`;
+			CREATE TABLE `cargos` (
+			  `id_cargo` bigint NOT NULL AUTO_INCREMENT,
+			  `titulo` varchar(60) NOT NULL,
+			  PRIMARY KEY (`id_cargo`),
+			  UNIQUE KEY `titulo_UNIQUE` (`titulo`)
+			) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+			
+			LOCK TABLES `cargos` WRITE;
+			INSERT INTO `cargos` VALUES (1,'Administrador'),(8,'Advogado'),(17,'Analista'),(7,'Atendente'),(6,'Auditor'),(3,'Auxiliar'),(5,'Contabilista'),(4,'Contador'),(15,'DBA'),(9,'Eletricista'),(2,'Gerente'),(16,'Help Desk'),(10,'Pedreiro'),(14,'Programador Angular'),(13,'Programador Java'),(12,'Psicologo'),(18,'Secretário'),(11,'Servente');
+			UNLOCK TABLES;
+		</sql>
+    </changeSet>
+    
+</databaseChangeLog>

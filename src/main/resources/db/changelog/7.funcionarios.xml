@@ -1,0 +1,44 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+	<changeSet author="ortiz" id="202303032147">
+		<sql>
+		DROP TABLE IF EXISTS `funcionarios`;
+		CREATE TABLE `funcionarios` (
+		  `id_funcionario` bigint NOT NULL AUTO_INCREMENT,
+		  `nome` varchar(100) NOT NULL,
+		  `data_nascimento` date NOT NULL,
+		  `foto` longblob,
+		  `salario` decimal(9,2) NOT NULL,
+		  `data_admissao` date NOT NULL,
+		  `data_demissao` date DEFAULT NULL,
+		  `id_endereco` bigint NOT NULL,
+		  `id_nivel` bigint NOT NULL,
+		  `id_cargo` bigint NOT NULL,
+		  PRIMARY KEY (`id_funcionario`),
+		  UNIQUE KEY `nome_UNIQUE` (`nome`),
+		  KEY `id_enderco_fk_idx` (`id_endereco`),
+		  KEY `id_nivel_fk_idx` (`id_nivel`),
+		  KEY `id_cargo_fk_idx` (`id_cargo`),
+		  CONSTRAINT `id_cargo_fk` FOREIGN KEY (`id_cargo`) REFERENCES `cargos` (`id_cargo`),
+		  CONSTRAINT `id_enderco_fk` FOREIGN KEY (`id_endereco`) REFERENCES `enderecos` (`id_endereco`),
+		  CONSTRAINT `id_nivel_fk` FOREIGN KEY (`id_nivel`) REFERENCES `niveis` (`id_nivel`)
+		) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8;
+		</sql>
+    </changeSet>
+    
+    <changeSet author="ortiz" id="202303032148">
+		<sql>
+			LOCK TABLES `funcionarios` WRITE;
+			INSERT INTO `funcionarios` VALUES (1,'Bianca Duarte Ribas','1988-09-09',_binary '`‚',3050.00,'2006-11-23',NULL,1,2,8);
+			UNLOCK TABLES;
+		</sql>
+    </changeSet>
+    			
+</databaseChangeLog>

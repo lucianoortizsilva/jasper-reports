@@ -10,7 +10,7 @@ services:
     volumes:
       - .docker/db-1:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: jaspercurso
+      MYSQL_DATABASE: jasper-curso-db
       MYSQL_USER: ortiz
       MYSQL_PASSWORD: 12345
       MYSQL_ROOT_PASSWORD: 12345

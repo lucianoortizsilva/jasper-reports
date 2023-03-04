@@ -1,0 +1,28 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+	<changeSet author="ortiz" id="202303032306">
+		<sql>
+			DROP TABLE IF EXISTS `telefones`;
+			CREATE TABLE `telefones` (
+			  `id_telefone` bigint NOT NULL AUTO_INCREMENT,
+			  `numero` varchar(11) NOT NULL,
+			  `tipo_fone` varchar(3) NOT NULL,
+			  `id_funcionario` bigint NOT NULL,
+			  PRIMARY KEY (`id_telefone`),
+			  KEY `id_funcionario_fk_idx` (`id_funcionario`),
+			  CONSTRAINT `id_funcionario_fk` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionarios` (`id_funcionario`)
+			) ENGINE=InnoDB AUTO_INCREMENT=370 DEFAULT CHARSET=utf8;
+			LOCK TABLES `telefones` WRITE;
+			INSERT INTO `telefones` VALUES (1,'48958230115','CEL',1);
+			UNLOCK TABLES;
+		</sql>
+    </changeSet>
+    
+</databaseChangeLog>

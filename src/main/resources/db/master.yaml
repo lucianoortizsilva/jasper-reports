@@ -1,0 +1,17 @@
+databaseChangeLog:  
+  - include:
+      file: db/changelog/1.cargos.xml
+  - include:
+      file: db/changelog/2.departamentos.xml
+  - include:
+      file: db/changelog/3.departamento_tem_cargos.xml
+  - include:
+      file: db/changelog/4.empresas.xml
+  - include:
+      file: db/changelog/5.enderecos.xml
+  - include:
+      file: db/changelog/6.niveis.xml
+  - include:
+      file: db/changelog/7.funcionarios.xml      
+  - include:
+      file: db/changelog/8.telefones.xml      

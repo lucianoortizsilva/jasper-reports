@@ -1,0 +1,27 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+	<changeSet author="ortiz" id="202303032145">
+		<sql>
+			DROP TABLE IF EXISTS `empresas`;
+			CREATE TABLE `empresas` (
+			  `id_empresa` bigint NOT NULL,
+			  `razao_social` varchar(60) DEFAULT NULL,
+			  `cnpj` varchar(45) DEFAULT NULL,
+			  `telefone` varchar(11) DEFAULT NULL,
+			  `email` varchar(60) DEFAULT NULL,
+			  PRIMARY KEY (`id_empresa`)
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+			LOCK TABLES `empresas` WRITE;
+			INSERT INTO `empresas` VALUES (1,'Star Reports Company','86.380.252/0001-09','1130808080','contato@startreports.com.br');
+			UNLOCK TABLES;			
+		</sql>
+    </changeSet>
+    
+</databaseChangeLog>

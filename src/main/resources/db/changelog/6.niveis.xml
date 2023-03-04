@@ -1,0 +1,26 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+	<changeSet author="ortiz" id="202303032305">
+		<sql>
+			DROP TABLE IF EXISTS `niveis`;
+			CREATE TABLE `niveis` (
+			  `id_nivel` bigint NOT NULL,
+			  `nivel` varchar(45) NOT NULL,
+			  `bonus` decimal(2,2) NOT NULL,
+			  PRIMARY KEY (`id_nivel`),
+			  UNIQUE KEY `nivel_UNIQUE` (`nivel`)
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+			LOCK TABLES `niveis` WRITE;
+			INSERT INTO `niveis` VALUES (1,'TREINAMENTO',0.00),(2,'JUNIOR',0.10),(3,'SENIOR',0.18),(4,'PLENO',0.24);
+			UNLOCK TABLES;
+		</sql>
+    </changeSet>
+    
+</databaseChangeLog>
